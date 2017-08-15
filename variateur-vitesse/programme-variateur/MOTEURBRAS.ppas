@@ -1,0 +1,45 @@
+program MOTEURBRAS;
+var x, sens,vitesse : integer;
+txt: string[10];
+begin
+intcon:=$80;  // activation du convertisseur
+LCD_config(portb,6,5,4,3,portb,0,1,2); // configuration de l'afficheur LCD
+lcd_cmd(LCD_CURSOR_OFF);
+TRISC:=0;
+lcd_out(1,1,'Consigne:');
+lcd_out(2,1,'Sens    :');
+pwm1_init(500);   //  activation du MLI
+pwm2_init(500);   //  activation du MLI
+pwm1_change_duty(0); // changement du rapport cyclique
+pwm2_change_duty(0); // changement du rapport cyclique
+pwm1_start;
+pwm2_start;
+while (true) do
+begin
+x:=adc_read(0);
+if x < 512 then
+           begin
+           vitesse:= 255- (x div 2);
+           pwm2_stop;
+           pwm1_start;
+           pwm_change_duty(vitesse);
+           vitesse:=(vitesse * 100)div 255;
+           sens := 1;
+           end
+else
+           begin
+           pwm1_stop;
+           pwm2_start;
+           vitesse:=(x-512)div 2;
+           pwm2_change_duty(vitesse);
+           vitesse:=(vitesse * 100)div 255;
+           sens := 2;
+           end;
+longinttostr(vitesse,txt);
+lcd_out(1,10,txt);
+if sens = 1 then   lcd_out(2,10,'   1  ');
+if sens = 2 then   lcd_out(2,10,'   2  ');
+
+
+end;
+end.

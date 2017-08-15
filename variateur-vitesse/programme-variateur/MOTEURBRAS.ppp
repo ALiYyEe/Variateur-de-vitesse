@@ -1,0 +1,29 @@
+[DeviceName]
+Value=P16F876
+[DeviceClock]
+Value=4
+[MainUnit]
+Value=MOTEURBRAS.ppas
+[DeviceFlags]
+Count=3
+Value0=_LVP_OFF = $3F7F
+Value1=_WDT_OFF = $3FFB
+Value2=_HS_OSC = $3FFE
+[BuildSimDebug]
+Build=0
+SimDebug=0
+[ProjectFiles]
+Count=0
+[OtherFiles]
+Count=1
+Value0=C:\Documents and Settings\Abidi\Bureau\mr hechmi\variateur\programme\MOTEURBRAS.ppas
+Value1=D:\doc\pwm\VARIATEUR.ppas
+[TabIndex]
+Value=0
+[SearchPath]
+Count=3
+Value0=C:\Program Files\Mikroelektronika\mikroPascal\Defs\
+Value1=C:\Program Files\Mikroelektronika\mikroPascal\Uses\p16\
+Value2=C:\Documents and Settings\Abidi\Bureau\mr hechmi\variateur\programme\
+[EEPROMinfo]
+isused=0
